@@ -27,12 +27,9 @@
       // item = document.getElementsByName("item")[0].value;
       var adding = function () {
         n = document.getElementById("item").value;
-        console.log(`n: ${n}`);
         var li = document.createElement("li");
         var node = document.createTextNode(n);
         li.appendChild(node);
-        console.log(`node: ${node}`);
-
         var element = document.getElementById("ul");
         element.appendChild(li);
       };
