@@ -26,12 +26,16 @@
       // console.log(document.getElementsByName("item")[0].value);
       // item = document.getElementsByName("item")[0].value;
       var adding = function () {
-        n = document.getElementById("item").value;
-        var li = document.createElement("li");
-        var node = document.createTextNode(n);
-        li.appendChild(node);
-        var element = document.getElementById("ul");
-        element.appendChild(li);
+        n = document.getElementById("item");
+        if (n.value.trim() != "") {
+          var li = document.createElement("li");
+          var node = document.createTextNode(n.value);
+          li.appendChild(node);
+          var element = document.getElementById("ul");
+          element.appendChild(li);
+          n.value = '';
+          
+        }
       };
     </script>
   </body>
