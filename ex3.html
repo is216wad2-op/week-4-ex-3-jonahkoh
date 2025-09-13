@@ -1,42 +1,47 @@
 <html>
-  <head>
-    <title>Event Handling</title>
-  </head>
-  <body>
-    <h1>Shopping List</h1>
-    <p>Get it done today</p>
-
-    <!-- add HTML code here -->
-
-    <input type="text" id="item" />
-    <input type="submit" value="Enter" onclick="adding()" />
-    <div id="div1">
-      <ul id="ul">
-        <li>Notebook</li>
-        <li>Jello</li>
-        <li>Spinach</li>
-        <li>Rice</li>
-        <li>Birthday Cake</li>
-        <li>Candles</li>
+   <head>
+      <title>Event Handling</title>
+   </head>
+   <body>
+     
+      <h1>Shopping List</h1>
+      <p>Get it done today</p>
+      <input id="userinput"  type="text" placeholder="enter items">
+      <button id="enter" onclick="addListAfterClick()">Enter</button>
+      <ul>
+         <li>Notebook</li>
+         <li>Jello</li>
+         <li>Spinach</li>
+         <li>Rice</li>
+         <li>Birthday Cake</li>
+         <li>Candles</li>
       </ul>
-    </div>
+      
+      <script>
+      
+         function addListAfterClick() {
+            var ul = document.getElementsByTagName("ul")[0];
+            var li = document.createElement("li"); // <li></li>
+            var input = document.getElementById("userinput");
+            // add new item only if the user has entered something   
+            if (input.value.length > 0) {
+               var textNode = document.createTextNode(input.value); /// e.g. "Candy"
+               li.appendChild(textNode); // <li>Candy</li>
+               // li.innerText = input.value; // Not using createTextNode, 
+                                           // but directly setting the innerText
+                                           // Doesn't need appendChild step
+               ul.appendChild(li); // add <li>Candy</li> to the ul element
+               // clear the input box after adding the item
+               input.value = "";
+            }
+            // following alternative code also works but is unsafe
+            // try entering the input <h2>abcd</h2>
+            // var input = document.getElementById("userinput");
+            // var ul = document.getElementsByTagName("ul")[0];
+            // ul.innerHTML += input.value
+         }
 
-    <script>
-      // add code here
-      // console.log(document.getElementsByName("item")[0].value);
-      // item = document.getElementsByName("item")[0].value;
-      var adding = function () {
-        n = document.getElementById("item");
-        if (n.value.trim() != "") {
-          var li = document.createElement("li");
-          var node = document.createTextNode(n.value);
-          li.appendChild(node);
-          var element = document.getElementById("ul");
-          element.appendChild(li);
-          n.value = '';
-          
-        }
-      };
-    </script>
-  </body>
+      </script>
+ 
+   </body>
 </html>
